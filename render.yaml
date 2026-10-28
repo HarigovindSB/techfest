@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: techfest-backend
+    env: node
+    rootDir: techfest-backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CLIENT_URL
+        sync: false   # your Netlify URL, e.g. https://techfest26.netlify.app
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
