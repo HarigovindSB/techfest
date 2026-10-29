@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ProtectedAdminRoute from "./components/ProtectedAdminRoute";
 
 import Home from "./pages/Home";
 import Events from "./pages/Events";
@@ -14,8 +15,9 @@ import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import MyRegistrations from "./pages/MyRegistrations";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
 
-// Exp 5: load the Gallery (and its images) only when it is visited
 const Gallery = lazy(() => import("./pages/Gallery"));
 
 export default function App() {
@@ -25,20 +27,35 @@ export default function App() {
 
       <main>
         <Suspense fallback={<p className="loading page">Loading...</p>}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/register" element={<Registration />} />
-          <Route path="/confirmation" element={<Confirmation />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/my-registrations" element={<MyRegistrations />} />
+          <Routes>
+            {/* Public pages */}
+            <Route path="/" element={<Home />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/register" element={<Registration />} />
+            <Route path="/confirmation" element={<Confirmation />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/cart" element={<Cart />} />
 
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            {/* Regular user authentication */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route
+              path="/my-registrations"
+              element={<MyRegistrations />}
+            />
+
+            {/* Administrator authentication */}
+            <Route path="/admin-login" element={<AdminLogin />} />
+
+            {/* Administrator-only pages */}
+            <Route element={<ProtectedAdminRoute />}>
+              <Route path="/admin" element={<AdminDashboard />} />
+            </Route>
+
+            {/* Unknown routes */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </Suspense>
       </main>
 

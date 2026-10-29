@@ -383,3 +383,154 @@ button.danger {
   border-radius: 6px;
   font: inherit;
 }
+
+
+
+.admin-login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 65vh;
+}
+
+.admin-login-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 32px;
+  border-radius: 16px;
+  background: white;
+  color: #222;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.dark .admin-login-card {
+  background: #1e293b;
+  color: white;
+}
+
+.admin-login-card h1 {
+  margin-bottom: 10px;
+}
+
+.admin-login-card > p {
+  margin-bottom: 20px;
+}
+
+.admin-login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-login-card form input {
+  width: 100%;
+}
+
+.admin-login-card form button {
+  margin-top: 12px;
+}
+
+.admin-login-back {
+  margin-top: 24px;
+}
+
+.admin-login-back a {
+  color: #2563eb;
+}
+
+.admin-dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.admin-dashboard-header h1 {
+  margin: 8px 0;
+}
+
+.admin-eyebrow {
+  color: #2563eb;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  margin-bottom: 35px;
+}
+
+.admin-stat-card {
+  padding: 24px;
+  border-radius: 12px;
+  background: #e8efff;
+  color: #172554;
+}
+
+.dark .admin-stat-card {
+  background: #1e293b;
+  color: white;
+}
+
+.admin-stat-card span {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.admin-stat-card strong {
+  font-size: 2rem;
+}
+
+.admin-dashboard-section {
+  margin-top: 30px;
+  padding: 24px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+}
+
+.dark .admin-dashboard-section {
+  border-color: #475569;
+}
+
+.admin-dashboard-section > h2,
+.admin-events-heading h2 {
+  margin-bottom: 8px;
+}
+
+.admin-dashboard-section > p,
+.admin-events-heading p {
+  margin-bottom: 18px;
+}
+
+.admin-events-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.admin-empty {
+  padding: 25px;
+  border-radius: 8px;
+  background: rgba(148, 163, 184, 0.15);
+}
+
+@media (max-width: 600px) {
+  .admin-login-card {
+    padding: 22px;
+  }
+
+  .admin-dashboard-section {
+    padding: 16px;
+  }
+
+  .admin-dashboard-header {
+    align-items: flex-start;
+  }
+}
