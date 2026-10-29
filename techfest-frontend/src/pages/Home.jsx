@@ -1,9 +1,23 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
-// Exp 3 Q6: public API (JSONPlaceholder) with loading and error states
-const PUBLIC_API = "https://jsonplaceholder.typicode.com/posts?_limit=3";
+const ANNOUNCEMENTS = [
+  {
+    id: 1,
+    title: "Welcome to TechFest 2026!",
+    body: "Get ready to explore technology, innovation, and creativity at our annual technical festival.",
+  },
+  {
+    id: 2,
+    title: "Event Registrations Are Open",
+    body: "Explore our exciting technical events and register to showcase your skills and compete with talented participants.",
+  },
+  {
+    id: 3,
+    title: "Get Ready for the Ultimate Tech Experience",
+    body: "Join us for coding challenges, robotics competitions, design contests, and other exciting technical activities.",
+  },
+];
 
 export default function Home() {
   const [news, setNews] = useState([]);
@@ -11,15 +25,8 @@ export default function Home() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    let active = true;
-    axios
-      .get(PUBLIC_API)
-      .then((res) => active && setNews(res.data))
-      .catch(() => active && setError("Could not load announcements"))
-      .finally(() => active && setLoading(false));
-    return () => {
-      active = false;
-    };
+    setNews(ANNOUNCEMENTS);
+    setLoading(false);
   }, []);
 
   return (
@@ -28,7 +35,7 @@ export default function Home() {
         <h1>Welcome to TechFest 2026</h1>
 
         <p>
-          Explore technology, innovation and creativity
+          Explore technology, innovation, and creativity
           at our annual technical festival.
         </p>
 
@@ -39,8 +46,13 @@ export default function Home() {
 
       <section className="page announcements">
         <h2>Announcements</h2>
-        {loading && <p className="loading">Loading announcements...</p>}
+
+        {loading && (
+          <p className="loading">Loading announcements...</p>
+        )}
+
         {error && <p className="error">{error}</p>}
+
         <div className="event-grid">
           {news.map((item) => (
             <div className="event-card" key={item.id}>
